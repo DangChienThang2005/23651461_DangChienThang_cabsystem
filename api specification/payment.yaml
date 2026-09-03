@@ -1,0 +1,188 @@
+paths:
+  /api/rides/{rideId}/fare:
+    get:
+      tags:
+      - Payment
+      summary: Xác định và xem số tiền phải trả
+      description: 'FR22 - BR05.1: Hệ thống xác định số tiền phải trả.
+
+        FR35 - BR07.2: Khách hàng xem số tiền phải trả.'
+      operationId: fr22_fr35_getFare
+      x-fr-id:
+      - FR22
+      - FR35
+      x-sub-requirement:
+      - BR05.1
+      - BR07.2
+      x-acceptance-criteria:
+      - AC-12
+      - AC-18
+      security:
+      - bearerAuth: []
+      parameters: &id001
+      - name: rideId
+        in: path
+        required: true
+        description: Mã chuyến đi
+        schema:
+          type: string
+        example: CH001
+      responses:
+        '200':
+          description: Thông tin số tiền phải trả
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fare'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Không tìm thấy chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/payments/{rideId}/cash:
+    post:
+      tags:
+      - Payment
+      summary: Thanh toán tiền mặt
+      description: 'FR23 - BR05.2: Thanh toán tiền mặt.'
+      operationId: fr23
+      x-fr-id: FR23
+      x-sub-requirement: BR05.2
+      x-acceptance-criteria:
+      - AC-13
+      responses:
+        '200':
+          description: Thanh toán tiền mặt thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CashPaymentRequest'
+      parameters: *id001
+  /api/payments/{rideId}/electronic:
+    post:
+      tags:
+      - Payment
+      summary: Thanh toán điện tử
+      description: 'FR24 - BR05.3: Thanh toán điện tử.'
+      operationId: fr24
+      x-fr-id: FR24
+      x-sub-requirement: BR05.3
+      x-acceptance-criteria:
+      - AC-13
+      - AC-14
+      responses:
+        '200':
+          description: Đã khởi tạo thanh toán điện tử
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ElectronicPaymentRequest'
+      parameters: *id001
+  /api/payments/providers/{provider}:
+    post:
+      tags:
+      - Payment
+      summary: Tích hợp với nhà cung cấp thanh toán bên ngoài
+      description: 'FR25 - BR05.4: Tích hợp với nhà cung cấp thanh toán bên ngoài.'
+      operationId: fr25
+      x-fr-id: FR25
+      x-sub-requirement: BR05.4
+      x-acceptance-criteria:
+      - AC-14
+      responses:
+        '200':
+          description: Giao dịch đã được chuyển tới nhà cung cấp thanh toán
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentProviderRequest'
+      parameters:
+      - name: provider
+        in: path
+        required: true
+        description: Nhà cung cấp thanh toán bên ngoài
+        schema:
+          type: string
+        example: MOMO
+  /api/payments/{rideId}/retry:
+    post:
+      tags:
+      - Payment
+      summary: Xử lý thanh toán điện tử thất bại
+      description: 'FR26 - BR05.5: Xử lý thanh toán điện tử thất bại.'
+      operationId: fr26
+      x-fr-id: FR26
+      x-sub-requirement: BR05.5
+      x-acceptance-criteria:
+      - AC-15
+      responses:
+        '200':
+          description: Đã xử lý yêu cầu thanh toán lại
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetryPaymentRequest'
+      parameters: *id001
