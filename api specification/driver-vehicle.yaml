@@ -1,0 +1,192 @@
+paths:
+  /api/drivers/register:
+    post:
+      tags:
+      - Driver & Vehicle
+      summary: Đăng ký tài xế
+      description: 'FR37 - BR08.1: Đăng ký tài xế.'
+      operationId: fr37
+      x-fr-id: FR37
+      x-sub-requirement: BR08.1
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Đăng ký tài xế thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverRegisterRequest'
+  /api/drivers:
+    post:
+      tags:
+      - Driver & Vehicle
+      summary: Nhân viên vận hành tạo tài khoản tài xế
+      description: 'FR38 - BR08.2: Nhân viên vận hành tạo tài khoản tài xế.'
+      operationId: fr38
+      x-fr-id: FR38
+      x-sub-requirement: BR08.2
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Tạo tài khoản tài xế thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverRegisterRequest'
+  /api/drivers/me:
+    put:
+      tags:
+      - Driver & Vehicle
+      summary: Cập nhật hồ sơ tài xế
+      description: 'FR39 - BR08.3: Cập nhật hồ sơ tài xế.'
+      operationId: fr39
+      x-fr-id: FR39
+      x-sub-requirement: BR08.3
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Cập nhật hồ sơ tài xế thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverProfileUpdateRequest'
+  /api/drivers/me/vehicle:
+    put:
+      tags:
+      - Driver & Vehicle
+      summary: Cập nhật thông tin phương tiện
+      description: 'FR40 - BR08.4: Cập nhật thông tin phương tiện.'
+      operationId: fr40
+      x-fr-id: FR40
+      x-sub-requirement: BR08.4
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Cập nhật thông tin phương tiện thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vehicle'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleRequest'
+  /api/drivers/me/status:
+    put:
+      tags:
+      - Driver & Vehicle
+      summary: Cập nhật trạng thái hoạt động
+      description: 'FR41 - BR08.5: Cập nhật trạng thái hoạt động.'
+      operationId: fr41
+      x-fr-id: FR41
+      x-sub-requirement: BR08.5
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Cập nhật trạng thái hoạt động thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverStatusRequest'
+  /api/drivers/me/availability:
+    put:
+      tags:
+      - Driver & Vehicle
+      summary: Chuyển sang trạng thái sẵn sàng nhận chuyến
+      description: 'FR42 - BR08.6: Chuyển sang trạng thái sẵn sàng nhận chuyến.'
+      operationId: fr42
+      x-fr-id: FR42
+      x-sub-requirement: BR08.6
+      x-acceptance-criteria:
+      - AC-05
+      - AC-20
+      responses:
+        '200':
+          description: Tài xế đã sẵn sàng nhận chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverAvailabilityRequest'
