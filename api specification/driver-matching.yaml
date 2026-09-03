@@ -1,0 +1,245 @@
+paths:
+  /api/dispatch/drivers/match:
+    post:
+      tags:
+      - Driver Matching
+      summary: Xác định tài xế phù hợp
+      description: 'FR09 - BR03.1: Xác định tài xế phù hợp.'
+      operationId: fr09
+      x-fr-id: FR09
+      x-sub-requirement: BR03.1
+      x-acceptance-criteria:
+      - AC-05
+      responses:
+        '200':
+          description: Đã xác định tài xế phù hợp
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverMatchRequest'
+  /api/dispatch/drivers/location:
+    post:
+      tags:
+      - Driver Matching
+      summary: Xem xét vị trí tài xế
+      description: 'FR10 - BR03.2: Xem xét vị trí tài xế.'
+      operationId: fr10
+      x-fr-id: FR10
+      x-sub-requirement: BR03.2
+      x-acceptance-criteria:
+      - AC-05
+      responses:
+        '200':
+          description: Đã lọc tài xế theo vị trí
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverLocationFilterRequest'
+  /api/dispatch/drivers/availability:
+    post:
+      tags:
+      - Driver Matching
+      summary: Xem xét trạng thái sẵn sàng
+      description: 'FR11 - BR03.3: Xem xét trạng thái sẵn sàng.'
+      operationId: fr11
+      x-fr-id: FR11
+      x-sub-requirement: BR03.3
+      x-acceptance-criteria:
+      - AC-05
+      responses:
+        '200':
+          description: Đã lọc tài xế theo trạng thái sẵn sàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverAvailabilityFilterRequest'
+  /api/dispatch/drivers/priority:
+    post:
+      tags:
+      - Driver Matching
+      summary: Ưu tiên tài xế phù hợp và gần khách hàng
+      description: 'FR12 - BR03.4: Ưu tiên tài xế phù hợp và gần khách hàng.'
+      operationId: fr12
+      x-fr-id: FR12
+      x-sub-requirement: BR03.4
+      x-acceptance-criteria:
+      - AC-06
+      responses:
+        '200':
+          description: Đã sắp xếp tài xế theo tiêu chí ưu tiên
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverPriorityRequest'
+  /api/dispatch/rides/{rideId}/request:
+    post:
+      tags:
+      - Driver Matching
+      summary: Gửi yêu cầu cho tài xế
+      description: 'FR13 - BR03.5: Gửi yêu cầu cho tài xế.'
+      operationId: fr13
+      x-fr-id: FR13
+      x-sub-requirement: BR03.5
+      x-acceptance-criteria:
+      - AC-05
+      - AC-17
+      responses:
+        '200':
+          description: Yêu cầu chuyến đi đã được gửi cho tài xế
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: &id001
+      - name: rideId
+        in: path
+        required: true
+        description: Mã chuyến đi
+        schema:
+          type: string
+        example: CH001
+  /api/dispatch/rides/{rideId}/retry-rejection:
+    post:
+      tags:
+      - Driver Matching
+      summary: Xử lý tài xế từ chối
+      description: 'FR14 - BR03.6: Xử lý tài xế từ chối.'
+      operationId: fr14
+      x-fr-id: FR14
+      x-sub-requirement: BR03.6
+      x-acceptance-criteria:
+      - AC-07
+      responses:
+        '200':
+          description: Hệ thống tiếp tục tìm tài xế khác
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/dispatch/rides/{rideId}/retry-timeout:
+    post:
+      tags:
+      - Driver Matching
+      summary: Xử lý tài xế không phản hồi
+      description: 'FR15 - BR03.7: Xử lý tài xế không phản hồi.'
+      operationId: fr15
+      x-fr-id: FR15
+      x-sub-requirement: BR03.7
+      x-acceptance-criteria:
+      - AC-08
+      responses:
+        '200':
+          description: Hệ thống tiếp tục tìm tài xế khác
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/dispatch/rides/{rideId}/no-driver:
+    post:
+      tags:
+      - Driver Matching
+      summary: Thông báo khi không tìm được tài xế
+      description: 'FR16 - BR03.8: Thông báo khi không tìm được tài xế.'
+      operationId: fr16
+      x-fr-id: FR16
+      x-sub-requirement: BR03.8
+      x-acceptance-criteria:
+      - AC-09
+      responses:
+        '200':
+          description: Đã thông báo không tìm được tài xế
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
