@@ -1,0 +1,223 @@
+paths:
+  /api/operations/customers:
+    get:
+      tags:
+      - Operations
+      summary: Quản lý khách hàng
+      description: 'FR43 - BR09.1: Quản lý khách hàng.'
+      operationId: fr43
+      x-fr-id: FR43
+      x-sub-requirement: BR09.1
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Truy vấn dữ liệu vận hành thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/operations/drivers:
+    get:
+      tags:
+      - Operations
+      summary: Quản lý tài xế
+      description: 'FR44 - BR09.2: Quản lý tài xế.'
+      operationId: fr44
+      x-fr-id: FR44
+      x-sub-requirement: BR09.2
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Truy vấn dữ liệu vận hành thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/operations/vehicles:
+    get:
+      tags:
+      - Operations
+      summary: Quản lý phương tiện
+      description: 'FR45 - BR09.3: Quản lý phương tiện.'
+      operationId: fr45
+      x-fr-id: FR45
+      x-sub-requirement: BR09.3
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Truy vấn dữ liệu vận hành thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VehicleList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/operations/rides:
+    get:
+      tags:
+      - Operations
+      summary: Quản lý chuyến đi
+      description: 'FR46 - BR09.4: Quản lý chuyến đi.'
+      operationId: fr46
+      x-fr-id: FR46
+      x-sub-requirement: BR09.4
+      x-acceptance-criteria:
+      - AC-20
+      responses:
+        '200':
+          description: Truy vấn dữ liệu vận hành thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/operations/rides/ongoing:
+    get:
+      tags:
+      - Operations
+      summary: Xem chuyến đang diễn ra
+      description: 'FR47 - BR09.5: Xem chuyến đang diễn ra.'
+      operationId: fr47
+      x-fr-id: FR47
+      x-sub-requirement: BR09.5
+      x-acceptance-criteria:
+      - AC-21
+      responses:
+        '200':
+          description: Truy vấn dữ liệu vận hành thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/operations/drivers/status:
+    get:
+      tags:
+      - Operations
+      summary: Kiểm tra trạng thái tài xế
+      description: 'FR48 - BR09.6: Kiểm tra trạng thái tài xế.'
+      operationId: fr48
+      x-fr-id: FR48
+      x-sub-requirement: BR09.6
+      x-acceptance-criteria:
+      - AC-21
+      responses:
+        '200':
+          description: Truy vấn dữ liệu vận hành thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/operations/rides/{rideId}/error:
+    post:
+      tags:
+      - Operations
+      summary: Xử lý chuyến bị lỗi
+      description: 'FR49 - BR09.7: Xử lý chuyến bị lỗi.'
+      operationId: fr49
+      x-fr-id: FR49
+      x-sub-requirement: BR09.7
+      x-acceptance-criteria:
+      - AC-22
+      responses:
+        '200':
+          description: Đã hỗ trợ xử lý chuyến bị lỗi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RideErrorRequest'
+      parameters:
+      - name: rideId
+        in: path
+        required: true
+        description: Mã chuyến đi
+        schema:
+          type: string
+        example: CH001
+  /api/operations/transactions/history:
+    get:
+      tags:
+      - Operations
+      summary: Tra cứu lịch sử giao dịch
+      description: 'FR50 - BR09.8: Tra cứu lịch sử giao dịch.'
+      operationId: fr50
+      x-fr-id: FR50
+      x-sub-requirement: BR09.8
+      x-acceptance-criteria:
+      - AC-23
+      responses:
+        '200':
+          description: Lịch sử giao dịch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
