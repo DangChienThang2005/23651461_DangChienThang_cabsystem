@@ -1,0 +1,170 @@
+paths:
+  /api/rides/booking/pickup:
+    post:
+      tags:
+      - Ride Booking
+      summary: Nhập điểm đón
+      description: 'FR04 - BR02.1: Nhập điểm đón.'
+      operationId: fr04
+      x-fr-id: FR04
+      x-sub-requirement: BR02.1
+      x-acceptance-criteria:
+      - AC-03
+      responses:
+        '200':
+          description: Điểm đón hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+  /api/rides/booking/destination:
+    post:
+      tags:
+      - Ride Booking
+      summary: Nhập điểm đến
+      description: 'FR05 - BR02.2: Nhập điểm đến.'
+      operationId: fr05
+      x-fr-id: FR05
+      x-sub-requirement: BR02.2
+      x-acceptance-criteria:
+      - AC-03
+      responses:
+        '200':
+          description: Điểm đến hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+  /api/rides/booking/vehicle-type:
+    post:
+      tags:
+      - Ride Booking
+      summary: Lựa chọn loại xe
+      description: 'FR06 - BR02.3: Lựa chọn loại xe.'
+      operationId: fr06
+      x-fr-id: FR06
+      x-sub-requirement: BR02.3
+      x-acceptance-criteria:
+      - AC-03
+      responses:
+        '200':
+          description: Lựa chọn loại xe thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VehicleTypeRequest'
+  /api/rides:
+    post:
+      tags:
+      - Ride Booking
+      summary: Gửi yêu cầu đặt xe
+      description: 'FR07 - BR02.4: Gửi yêu cầu đặt xe.'
+      operationId: fr07
+      x-fr-id: FR07
+      x-sub-requirement: BR02.4
+      x-acceptance-criteria:
+      - AC-03
+      - AC-04
+      responses:
+        '200':
+          description: Yêu cầu đặt xe đã được tiếp nhận
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Chưa xác thực
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRideRequest'
+  /api/rides/{rideId}:
+    get:
+      tags:
+      - Ride Booking
+      summary: Theo dõi yêu cầu/chuyến đi
+      description: 'FR08 - BR02.5: Theo dõi yêu cầu/chuyến đi.'
+      operationId: fr08
+      x-fr-id: FR08
+      x-sub-requirement: BR02.5
+      x-acceptance-criteria:
+      - AC-10
+      responses:
+        '200':
+          description: Thông tin chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: rideId
+        in: path
+        required: true
+        description: Mã chuyến đi
+        schema:
+          type: string
+        example: CH001
