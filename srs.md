@@ -216,65 +216,66 @@ quadrantChart
 | 5 | Nhân viên vận hành / Ban lãnh đạo | Xem báo cáo | Hiệu quả hoạt động của tài xế |
 
 7. Thiết kế phân rã yêu cầu nghiệp vụ
-## Business Requirement Decomposition
+## 7. Thiết kế phân rã yêu cầu nghiệp vụ 
+## Business Requirement Decomposition 
 
-| ID | Business Requirement | Sub Requirement | Description |
-|---|---|---|---|
-| BR01 | Quản lý khách hàng | BR01.1 Đăng ký tài khoản | Khách hàng đăng ký tài khoản |
-| BR01 | Quản lý khách hàng | BR01.2 Đăng nhập | Khách hàng đăng nhập |
-| BR01 | Quản lý khách hàng | BR01.3 Cập nhật thông tin cá nhân | Khách hàng cập nhật thông tin cá nhân |
-| BR02 | Đặt xe | BR02.1 Nhập điểm đón | Khách hàng nhập điểm đón |
-| BR02 | Đặt xe | BR02.2 Nhập điểm đến | Khách hàng nhập điểm đến |
-| BR02 | Đặt xe | BR02.3 Lựa chọn loại xe | Khách hàng lựa chọn loại xe |
-| BR02 | Đặt xe | BR02.4 Gửi yêu cầu đặt xe | Khách hàng gửi yêu cầu đặt xe |
-| BR02 | Đặt xe | BR02.5 Theo dõi yêu cầu/chuyến đi | Khách hàng theo dõi tài xế, thời gian dự kiến đến và trạng thái chuyến |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.1 Xác định tài xế phù hợp | Hệ thống xác định tài xế phù hợp |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.2 Xem xét vị trí tài xế | Xác định tài xế dựa trên vị trí |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.3 Xem xét trạng thái sẵn sàng | Xác định tài xế dựa trên trạng thái sẵn sàng |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.4 Ưu tiên tài xế phù hợp và gần khách hàng | Hệ thống ưu tiên tài xế phù hợp và gần khách hàng |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.5 Gửi yêu cầu cho tài xế | Tài xế nhận được thông báo về yêu cầu |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.6 Xử lý tài xế từ chối | Hệ thống tiếp tục tìm tài xế khác |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.7 Xử lý tài xế không phản hồi | Hệ thống tiếp tục tìm tài xế khác |
-| BR03 | Tìm kiếm và phân công tài xế | BR03.8 Thông báo khi không tìm được tài xế | Thông báo rõ ràng cho khách hàng |
-| BR04 | Thực hiện và theo dõi chuyến đi | BR04.1 Cập nhật đã đến điểm đón | Tài xế cập nhật trạng thái đã đến điểm đón |
-| BR04 | Thực hiện và theo dõi chuyến đi | BR04.2 Cập nhật đã đón khách | Tài xế cập nhật trạng thái đã đón khách |
-| BR04 | Thực hiện và theo dõi chuyến đi | BR04.3 Cập nhật đang di chuyển | Tài xế cập nhật trạng thái đang di chuyển |
-| BR04 | Thực hiện và theo dõi chuyến đi | BR04.4 Cập nhật hoàn thành chuyến | Tài xế cập nhật trạng thái hoàn thành chuyến |
-| BR04 | Thực hiện và theo dõi chuyến đi | BR04.5 Theo dõi trạng thái chuyến | Khách hàng theo dõi trạng thái hiện tại của chuyến |
-| BR05 | Tính cước và thanh toán | BR05.1 Xác định số tiền phải trả | Hệ thống xác định số tiền phải trả dựa trên loại dịch vụ và thông tin chuyến đi |
-| BR05 | Tính cước và thanh toán | BR05.2 Thanh toán tiền mặt | Khách hàng có thể thanh toán bằng tiền mặt |
-| BR05 | Tính cước và thanh toán | BR05.3 Thanh toán điện tử | Khách hàng có thể thanh toán bằng phương thức thanh toán điện tử |
-| BR05 | Tính cước và thanh toán | BR05.4 Tích hợp nhà cung cấp thanh toán bên ngoài | Hệ thống tích hợp với nhà cung cấp thanh toán bên ngoài |
-| BR05 | Tính cước và thanh toán | BR05.5 Xử lý thanh toán điện tử thất bại | Thông báo khách hàng và cho phép xử lý lại theo chính sách doanh nghiệp |
-| BR06 | Thông báo | BR06.1 Thông báo tiếp nhận yêu cầu | Khách hàng nhận thông báo khi yêu cầu đặt xe được tiếp nhận |
-| BR06 | Thông báo | BR06.2 Thông báo tài xế nhận chuyến | Khách hàng nhận thông báo khi tài xế nhận chuyến |
-| BR06 | Thông báo | BR06.3 Thông báo tài xế đến điểm đón | Khách hàng nhận thông báo khi tài xế đến điểm đón |
-| BR06 | Thông báo | BR06.4 Thông báo chuyến hoàn thành | Khách hàng nhận thông báo khi chuyến hoàn thành |
-| BR06 | Thông báo | BR06.5 Thông báo kết quả thanh toán | Khách hàng nhận thông báo khi thanh toán có kết quả |
-| BR06 | Thông báo | BR06.6 Thông báo chuyến mới cho tài xế | Tài xế nhận thông báo về chuyến mới |
-| BR06 | Thông báo | BR06.7 Thông báo thay đổi liên quan đến chuyến | Tài xế nhận thông báo về những thay đổi liên quan đến chuyến đang thực hiện |
-| BR07 | Lịch sử và đánh giá | BR07.1 Xem lịch sử chuyến đi | Khách hàng xem lịch sử chuyến đi |
-| BR07 | Lịch sử và đánh giá | BR07.2 Xem số tiền phải trả | Khách hàng xem số tiền phải trả |
-| BR07 | Lịch sử và đánh giá | BR07.3 Đánh giá tài xế | Khách hàng đánh giá tài xế sau khi hoàn thành chuyến |
-| BR08 | Quản lý tài xế và phương tiện | BR08.1 Đăng ký tài xế | Tài xế có thể đăng ký |
-| BR08 | Quản lý tài xế và phương tiện | BR08.2 Nhân viên vận hành tạo tài khoản tài xế | Nhân viên vận hành có thể tạo tài khoản tài xế |
-| BR08 | Quản lý tài xế và phương tiện | BR08.3 Cập nhật hồ sơ tài xế | Tài xế cập nhật hồ sơ |
-| BR08 | Quản lý tài xế và phương tiện | BR08.4 Cập nhật thông tin phương tiện | Tài xế cập nhật thông tin phương tiện |
-| BR08 | Quản lý tài xế và phương tiện | BR08.5 Cập nhật trạng thái hoạt động | Tài xế cập nhật trạng thái hoạt động |
-| BR08 | Quản lý tài xế và phương tiện | BR08.6 Chuyển sang trạng thái sẵn sàng nhận chuyến | Tài xế chuyển sang trạng thái sẵn sàng nhận chuyến |
-| BR09 | Quản lý vận hành | BR09.1 Quản lý khách hàng | Nhân viên vận hành quản lý khách hàng |
-| BR09 | Quản lý vận hành | BR09.2 Quản lý tài xế | Nhân viên vận hành quản lý tài xế |
-| BR09 | Quản lý vận hành | BR09.3 Quản lý phương tiện | Nhân viên vận hành quản lý phương tiện |
-| BR09 | Quản lý vận hành | BR09.4 Quản lý chuyến đi | Nhân viên vận hành quản lý chuyến đi |
-| BR09 | Quản lý vận hành | BR09.5 Xem chuyến đang diễn ra | Nhân viên vận hành xem các chuyến đang diễn ra |
-| BR09 | Quản lý vận hành | BR09.6 Kiểm tra trạng thái tài xế | Nhân viên vận hành kiểm tra trạng thái tài xế |
-| BR09 | Quản lý vận hành | BR09.7 Xử lý chuyến bị lỗi | Nhân viên vận hành hỗ trợ xử lý các trường hợp chuyến bị lỗi |
-| BR09 | Quản lý vận hành | BR09.8 Tra cứu lịch sử giao dịch | Nhân viên vận hành tra cứu lịch sử giao dịch |
-| BR10 | Báo cáo | BR10.1 Báo cáo số lượng chuyến | Báo cáo số lượng chuyến |
-| BR10 | Báo cáo | BR10.2 Báo cáo doanh thu | Báo cáo doanh thu |
-| BR10 | Báo cáo | BR10.3 Báo cáo tỷ lệ chuyến hoàn thành | Báo cáo tỷ lệ chuyến hoàn thành |
-| BR10 | Báo cáo | BR10.4 Báo cáo tỷ lệ hủy | Báo cáo tỷ lệ hủy |
-| BR10 | Báo cáo | BR10.5 Báo cáo hiệu quả hoạt động của tài xế | Báo cáo hiệu quả hoạt động của tài xế |
+| ID | Business Requirement | Sub Requirement | FR | Description | 
+|---|---|---|---|---| 
+| BR01 | Quản lý khách hàng | BR01.1 Đăng ký tài khoản | FR01 | Khách hàng đăng ký tài khoản | 
+| BR01 | Quản lý khách hàng | BR01.2 Đăng nhập | FR02 | Khách hàng đăng nhập | 
+| BR01 | Quản lý khách hàng | BR01.3 Cập nhật thông tin cá nhân | FR03 | Khách hàng cập nhật thông tin cá nhân | 
+| BR02 | Đặt xe | BR02.1 Nhập điểm đón | FR04 | Khách hàng nhập điểm đón | 
+| BR02 | Đặt xe | BR02.2 Nhập điểm đến | FR05 | Khách hàng nhập điểm đến | 
+| BR02 | Đặt xe | BR02.3 Lựa chọn loại xe | FR06 | Khách hàng lựa chọn loại xe | 
+| BR02 | Đặt xe | BR02.4 Gửi yêu cầu đặt xe | FR07 | Khách hàng gửi yêu cầu đặt xe | 
+| BR02 | Đặt xe | BR02.5 Theo dõi yêu cầu/chuyến đi | FR08 | Khách hàng theo dõi tài xế, thời gian dự kiến đến và trạng thái chuyến | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.1 Xác định tài xế phù hợp | FR09 | Hệ thống xác định tài xế phù hợp | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.2 Xem xét vị trí tài xế | FR10 | Xác định tài xế dựa trên vị trí | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.3 Xem xét trạng thái sẵn sàng | FR11 | Xác định tài xế dựa trên trạng thái sẵn sàng | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.4 Ưu tiên tài xế phù hợp và gần khách hàng | FR12 | Hệ thống ưu tiên tài xế phù hợp và gần khách hàng | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.5 Gửi yêu cầu cho tài xế | FR13 | Tài xế nhận được thông báo về yêu cầu | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.6 Xử lý tài xế từ chối | FR14 | Hệ thống tiếp tục tìm tài xế khác | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.7 Xử lý tài xế không phản hồi | FR15 | Hệ thống tiếp tục tìm tài xế khác | 
+| BR03 | Tìm kiếm và phân công tài xế | BR03.8 Thông báo khi không tìm được tài xế | FR16 | Thông báo rõ ràng cho khách hàng | 
+| BR04 | Thực hiện và theo dõi chuyến đi | BR04.1 Cập nhật đã đến điểm đón | FR17 | Tài xế cập nhật trạng thái đã đến điểm đón | 
+| BR04 | Thực hiện và theo dõi chuyến đi | BR04.2 Cập nhật đã đón khách | FR18 | Tài xế cập nhật trạng thái đã đón khách | 
+| BR04 | Thực hiện và theo dõi chuyến đi | BR04.3 Cập nhật đang di chuyển | FR19 | Tài xế cập nhật trạng thái đang di chuyển | 
+| BR04 | Thực hiện và theo dõi chuyến đi | BR04.4 Cập nhật hoàn thành chuyến | FR20 | Tài xế cập nhật trạng thái hoàn thành chuyến | 
+| BR04 | Thực hiện và theo dõi chuyến đi | BR04.5 Theo dõi trạng thái chuyến | FR21 | Khách hàng theo dõi trạng thái hiện tại của chuyến | 
+| BR05 | Tính cước và thanh toán | BR05.1 Xác định số tiền phải trả | FR22 | Hệ thống xác định số tiền phải trả dựa trên loại dịch vụ và thông tin chuyến đi | 
+| BR05 | Tính cước và thanh toán | BR05.2 Thanh toán tiền mặt | FR23 | Khách hàng có thể thanh toán bằng tiền mặt | 
+| BR05 | Tính cước và thanh toán | BR05.3 Thanh toán điện tử | FR24 | Khách hàng có thể thanh toán bằng phương thức thanh toán điện tử | 
+| BR05 | Tính cước và thanh toán | BR05.4 Tích hợp nhà cung cấp thanh toán bên ngoài | FR25 | Hệ thống tích hợp với nhà cung cấp thanh toán bên ngoài | 
+| BR05 | Tính cước và thanh toán | BR05.5 Xử lý thanh toán điện tử thất bại | FR26 | Thông báo khách hàng và cho phép xử lý lại theo chính sách doanh nghiệp | 
+| BR06 | Thông báo | BR06.1 Thông báo tiếp nhận yêu cầu | FR27 | Khách hàng nhận thông báo khi yêu cầu đặt xe được tiếp nhận | 
+| BR06 | Thông báo | BR06.2 Thông báo tài xế nhận chuyến | FR28 | Khách hàng nhận thông báo khi tài xế nhận chuyến | 
+| BR06 | Thông báo | BR06.3 Thông báo tài xế đến điểm đón | FR29 | Khách hàng nhận thông báo khi tài xế đến điểm đón | 
+| BR06 | Thông báo | BR06.4 Thông báo chuyến hoàn thành | FR30 | Khách hàng nhận thông báo khi chuyến hoàn thành | 
+| BR06 | Thông báo | BR06.5 Thông báo kết quả thanh toán | FR31 | Khách hàng nhận thông báo khi thanh toán có kết quả | 
+| BR06 | Thông báo | BR06.6 Thông báo chuyến mới cho tài xế | FR32 | Tài xế nhận thông báo về chuyến mới | 
+| BR06 | Thông báo | BR06.7 Thông báo thay đổi liên quan đến chuyến | FR33 | Tài xế nhận thông báo về những thay đổi liên quan đến chuyến đang thực hiện | 
+| BR07 | Lịch sử và đánh giá | BR07.1 Xem lịch sử chuyến đi | FR34 | Khách hàng xem lịch sử chuyến đi | 
+| BR07 | Lịch sử và đánh giá | BR07.2 Xem số tiền phải trả | FR35 | Khách hàng xem số tiền phải trả | 
+| BR07 | Lịch sử và đánh giá | BR07.3 Đánh giá tài xế | FR36 | Khách hàng đánh giá tài xế sau khi hoàn thành chuyến | 
+| BR08 | Quản lý tài xế và phương tiện | BR08.1 Đăng ký tài xế | FR37 | Tài xế có thể đăng ký | 
+| BR08 | Quản lý tài xế và phương tiện | BR08.2 Nhân viên vận hành tạo tài khoản tài xế | FR38 | Nhân viên vận hành có thể tạo tài khoản tài xế | 
+| BR08 | Quản lý tài xế và phương tiện | BR08.3 Cập nhật hồ sơ tài xế | FR39 | Tài xế cập nhật hồ sơ | 
+| BR08 | Quản lý tài xế và phương tiện | BR08.4 Cập nhật thông tin phương tiện | FR40 | Tài xế cập nhật thông tin phương tiện | 
+| BR08 | Quản lý tài xế và phương tiện | BR08.5 Cập nhật trạng thái hoạt động | FR41 | Tài xế cập nhật trạng thái hoạt động | 
+| BR08 | Quản lý tài xế và phương tiện | BR08.6 Chuyển sang trạng thái sẵn sàng nhận chuyến | FR42 | Tài xế chuyển sang trạng thái sẵn sàng nhận chuyến | 
+| BR09 | Quản lý vận hành | BR09.1 Quản lý khách hàng | FR43 | Nhân viên vận hành quản lý khách hàng | 
+| BR09 | Quản lý vận hành | BR09.2 Quản lý tài xế | FR44 | Nhân viên vận hành quản lý tài xế | 
+| BR09 | Quản lý vận hành | BR09.3 Quản lý phương tiện | FR45 | Nhân viên vận hành quản lý phương tiện | 
+| BR09 | Quản lý vận hành | BR09.4 Quản lý chuyến đi | FR46 | Nhân viên vận hành quản lý chuyến đi | 
+| BR09 | Quản lý vận hành | BR09.5 Xem chuyến đang diễn ra | FR47 | Nhân viên vận hành xem các chuyến đang diễn ra | 
+| BR09 | Quản lý vận hành | BR09.6 Kiểm tra trạng thái tài xế | FR48 | Nhân viên vận hành kiểm tra trạng thái tài xế | 
+| BR09 | Quản lý vận hành | BR09.7 Xử lý chuyến bị lỗi | FR49 | Nhân viên vận hành hỗ trợ xử lý các trường hợp chuyến bị lỗi | 
+| BR09 | Quản lý vận hành | BR09.8 Tra cứu lịch sử giao dịch | FR50 | Nhân viên vận hành tra cứu lịch sử giao dịch | 
+| BR10 | Báo cáo | BR10.1 Báo cáo số lượng chuyến | FR51 | Báo cáo số lượng chuyến | 
+| BR10 | Báo cáo | BR10.2 Báo cáo doanh thu | FR52 | Báo cáo doanh thu | 
+| BR10 | Báo cáo | BR10.3 Báo cáo tỷ lệ chuyến hoàn thành | FR53 | Báo cáo tỷ lệ chuyến hoàn thành | 
+| BR10 | Báo cáo | BR10.4 Báo cáo tỷ lệ hủy | FR54 | Báo cáo tỷ lệ hủy | 
+| BR10 | Báo cáo | BR10.5 Báo cáo hiệu quả hoạt động của tài xế | FR55 | Báo cáo hiệu quả hoạt động của tài xế |
 
 8. xây dựng business rule và acept
 ## Business Rules
