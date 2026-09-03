@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: MVB - Ride Booking API
+  version: 1.0.0
+  description: Đặc tả API cho hệ thống đặt xe MVB, ánh xạ từ FR01 đến FR55.
+servers:
+- url: http://localhost:5000
+  description: Development server
+tags:
+- name: Customer
+  description: Quản lý khách hàng
+- name: Ride Booking
+  description: Đặt xe
+- name: Driver Matching
+  description: Tìm kiếm và phân công tài xế
+- name: Trip
+  description: Thực hiện và theo dõi chuyến đi
+- name: Payment
+  description: Tính cước và thanh toán
+- name: Notification
+  description: Thông báo
+- name: Driver & Vehicle
+  description: Quản lý tài xế và phương tiện
+- name: Operations
+  description: Quản lý vận hành
+- name: Reports
+  description: Báo cáo
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /api/auth/register:
+    $ref: ./paths/customer.yaml#/registerCustomer
+  /api/auth/login:
+    $ref: ./paths/customer.yaml#/login
+  /api/customers/me:
+    $ref: ./paths/customer.yaml#/updateCustomerProfile
+  /api/customers/me/rides/history:
+    $ref: ./paths/customer.yaml#/getRideHistory
+  /api/rides/{rideId}/rating:
+    $ref: ./paths/customer.yaml#/rateDriver
+  /api/rides/booking/pickup:
+    $ref: ./paths/ride-booking.yaml#/setPickupLocation
+  /api/rides/booking/destination:
+    $ref: ./paths/ride-booking.yaml#/setDestination
+  /api/rides/booking/vehicle-type:
+    $ref: ./paths/ride-booking.yaml#/selectVehicleType
+  /api/rides:
+    $ref: ./paths/ride-booking.yaml#/createRideRequest
+  /api/rides/{rideId}:
+    $ref: ./paths/ride-booking.yaml#/trackRide
+  /api/dispatch/drivers/match:
+    $ref: ./paths/driver-matching.yaml#/findSuitableDriver
+  /api/dispatch/drivers/location:
+    $ref: ./paths/driver-matching.yaml#/considerDriverLocation
+  /api/dispatch/drivers/availability:
+    $ref: ./paths/driver-matching.yaml#/considerDriverAvailability
+  /api/dispatch/drivers/priority:
+    $ref: ./paths/driver-matching.yaml#/prioritizeDriver
+  /api/dispatch/rides/{rideId}/request:
+    $ref: ./paths/driver-matching.yaml#/sendRideRequestToDriver
+  /api/dispatch/rides/{rideId}/retry-rejection:
+    $ref: ./paths/driver-matching.yaml#/handleDriverRejection
+  /api/dispatch/rides/{rideId}/retry-timeout:
+    $ref: ./paths/driver-matching.yaml#/handleDriverTimeout
+  /api/dispatch/rides/{rideId}/no-driver:
+    $ref: ./paths/driver-matching.yaml#/notifyNoDriverFound
+  /api/rides/{rideId}/status/driver-arrived:
+    $ref: ./paths/trip.yaml#/markDriverArrived
+  /api/rides/{rideId}/status/picked-up:
+    $ref: ./paths/trip.yaml#/markPassengerPickedUp
+  /api/rides/{rideId}/status/in-progress:
+    $ref: ./paths/trip.yaml#/markTripInProgress
+  /api/rides/{rideId}/status/completed:
+    $ref: ./paths/trip.yaml#/completeTrip
+  /api/rides/{rideId}/status:
+    $ref: ./paths/trip.yaml#/getRideStatus
+  /api/payments/{rideId}/fare:
+    $ref: ./paths/payment.yaml#/getRideFare
+  /api/payments/{rideId}/cash:
+    $ref: ./paths/payment.yaml#/payCash
+  /api/payments/{rideId}/electronic:
+    $ref: ./paths/payment.yaml#/payElectronic
+  /api/payments/providers:
+    $ref: ./paths/payment.yaml#/getPaymentProviders
+  /api/payments/{rideId}/retry:
+    $ref: ./paths/payment.yaml#/retryElectronicPayment
+  /api/notifications/customer/request-received:
+    $ref: ./paths/notification.yaml#/notifyRequestReceived
+  /api/notifications/customer/driver-accepted:
+    $ref: ./paths/notification.yaml#/notifyDriverAccepted
+  /api/notifications/customer/driver-arrived:
+    $ref: ./paths/notification.yaml#/notifyDriverArrived
+  /api/notifications/customer/trip-completed:
+    $ref: ./paths/notification.yaml#/notifyTripCompleted
+  /api/notifications/customer/payment-result:
+    $ref: ./paths/notification.yaml#/notifyPaymentResult
+  /api/notifications/driver/new-trip:
+    $ref: ./paths/notification.yaml#/notifyDriverNewTrip
+  /api/notifications/driver/trip-change:
+    $ref: ./paths/notification.yaml#/notifyDriverTripChange
+  /api/drivers/register:
+    $ref: ./paths/driver-vehicle.yaml#/registerDriver
+  /api/drivers:
+    $ref: ./paths/driver-vehicle.yaml#/createDriverAccount
+  /api/drivers/me:
+    $ref: ./paths/driver-vehicle.yaml#/updateDriverProfile
+  /api/drivers/me/vehicle:
+    $ref: ./paths/driver-vehicle.yaml#/updateDriverVehicle
+  /api/drivers/me/status:
+    $ref: ./paths/driver-vehicle.yaml#/updateDriverStatus
+  /api/drivers/me/availability:
+    $ref: ./paths/driver-vehicle.yaml#/setDriverAvailability
+  /api/operations/customers:
+    $ref: ./paths/operations.yaml#/manageCustomers
+  /api/operations/drivers:
+    $ref: ./paths/operations.yaml#/manageDrivers
+  /api/operations/vehicles:
+    $ref: ./paths/operations.yaml#/manageVehicles
+  /api/operations/rides:
+    $ref: ./paths/operations.yaml#/manageRides
+  /api/operations/rides/ongoing:
+    $ref: ./paths/operations.yaml#/getOngoingRides
+  /api/operations/drivers/status:
+    $ref: ./paths/operations.yaml#/getDriverStatuses
+  /api/operations/rides/{rideId}/error:
+    $ref: ./paths/operations.yaml#/handleRideError
+  /api/operations/transactions/history:
+    $ref: ./paths/operations.yaml#/getTransactionHistory
+  /api/reports/rides/count:
+    $ref: ./paths/reports.yaml#/getRideCountReport
+  /api/reports/revenue:
+    $ref: ./paths/reports.yaml#/getRevenueReport
+  /api/reports/rides/completion-rate:
+    $ref: ./paths/reports.yaml#/getCompletionRateReport
+  /api/reports/rides/cancellation-rate:
+    $ref: ./paths/reports.yaml#/getCancellationRateReport
+  /api/reports/drivers/performance:
+    $ref: ./paths/reports.yaml#/getDriverPerformanceReport
