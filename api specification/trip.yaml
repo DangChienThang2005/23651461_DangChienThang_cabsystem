@@ -1,0 +1,143 @@
+paths:
+  /api/rides/{rideId}/status/driver-arrived:
+    put:
+      tags:
+      - Trip
+      summary: Cập nhật đã đến điểm đón
+      description: 'FR17 - BR04.1: Cập nhật đã đến điểm đón.'
+      operationId: fr17
+      x-fr-id: FR17
+      x-sub-requirement: BR04.1
+      x-acceptance-criteria:
+      - AC-11
+      responses:
+        '200':
+          description: Cập nhật trạng thái chuyến thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: &id001
+      - name: rideId
+        in: path
+        required: true
+        description: Mã chuyến đi
+        schema:
+          type: string
+        example: CH001
+  /api/rides/{rideId}/status/picked-up:
+    put:
+      tags:
+      - Trip
+      summary: Cập nhật đã đón khách
+      description: 'FR18 - BR04.2: Cập nhật đã đón khách.'
+      operationId: fr18
+      x-fr-id: FR18
+      x-sub-requirement: BR04.2
+      x-acceptance-criteria:
+      - AC-11
+      responses:
+        '200':
+          description: Cập nhật trạng thái chuyến thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/rides/{rideId}/status/in-progress:
+    put:
+      tags:
+      - Trip
+      summary: Cập nhật đang di chuyển
+      description: 'FR19 - BR04.3: Cập nhật đang di chuyển.'
+      operationId: fr19
+      x-fr-id: FR19
+      x-sub-requirement: BR04.3
+      x-acceptance-criteria:
+      - AC-11
+      responses:
+        '200':
+          description: Cập nhật trạng thái chuyến thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/rides/{rideId}/status/completed:
+    put:
+      tags:
+      - Trip
+      summary: Cập nhật hoàn thành chuyến
+      description: 'FR20 - BR04.4: Cập nhật hoàn thành chuyến.'
+      operationId: fr20
+      x-fr-id: FR20
+      x-sub-requirement: BR04.4
+      x-acceptance-criteria:
+      - AC-11
+      responses:
+        '200':
+          description: Cập nhật trạng thái chuyến thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/rides/{rideId}/status:
+    get:
+      tags:
+      - Trip
+      summary: Theo dõi trạng thái chuyến
+      description: 'FR21 - BR04.5: Theo dõi trạng thái chuyến.'
+      operationId: fr21
+      x-fr-id: FR21
+      x-sub-requirement: BR04.5
+      x-acceptance-criteria:
+      - AC-10
+      responses:
+        '200':
+          description: Trạng thái hiện tại của chuyến
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
