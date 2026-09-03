@@ -1,0 +1,152 @@
+paths:
+  /api/reports/rides/count:
+    get:
+      tags:
+      - Reports
+      summary: Báo cáo số lượng chuyến
+      description: 'FR51 - BR10.1: Báo cáo số lượng chuyến.'
+      operationId: fr51
+      x-fr-id: FR51
+      x-sub-requirement: BR10.1
+      x-acceptance-criteria:
+      - AC-24
+      responses:
+        '200':
+          description: Báo cáo được tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: &id001
+      - name: fromDate
+        in: query
+        required: false
+        description: Ngày bắt đầu kỳ báo cáo
+        schema:
+          type: string
+          format: date
+        example: '2026-09-01'
+      - name: toDate
+        in: query
+        required: false
+        description: Ngày kết thúc kỳ báo cáo
+        schema:
+          type: string
+          format: date
+        example: '2026-09-30'
+  /api/reports/revenue:
+    get:
+      tags:
+      - Reports
+      summary: Báo cáo doanh thu
+      description: 'FR52 - BR10.2: Báo cáo doanh thu.'
+      operationId: fr52
+      x-fr-id: FR52
+      x-sub-requirement: BR10.2
+      x-acceptance-criteria:
+      - AC-24
+      responses:
+        '200':
+          description: Báo cáo được tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/reports/rides/completion-rate:
+    get:
+      tags:
+      - Reports
+      summary: Báo cáo tỷ lệ chuyến hoàn thành
+      description: 'FR53 - BR10.3: Báo cáo tỷ lệ chuyến hoàn thành.'
+      operationId: fr53
+      x-fr-id: FR53
+      x-sub-requirement: BR10.3
+      x-acceptance-criteria:
+      - AC-24
+      responses:
+        '200':
+          description: Báo cáo được tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/reports/rides/cancellation-rate:
+    get:
+      tags:
+      - Reports
+      summary: Báo cáo tỷ lệ hủy
+      description: 'FR54 - BR10.4: Báo cáo tỷ lệ hủy.'
+      operationId: fr54
+      x-fr-id: FR54
+      x-sub-requirement: BR10.4
+      x-acceptance-criteria:
+      - AC-24
+      responses:
+        '200':
+          description: Báo cáo được tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
+  /api/reports/drivers/performance:
+    get:
+      tags:
+      - Reports
+      summary: Báo cáo hiệu quả hoạt động của tài xế
+      description: 'FR55 - BR10.5: Báo cáo hiệu quả hoạt động của tài xế.'
+      operationId: fr55
+      x-fr-id: FR55
+      x-sub-requirement: BR10.5
+      x-acceptance-criteria:
+      - AC-24
+      responses:
+        '200':
+          description: Báo cáo được tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      parameters: *id001
