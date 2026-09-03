@@ -1,0 +1,159 @@
+paths:
+  /api/auth/register:
+    post:
+      tags:
+      - Customer
+      summary: Đăng ký tài khoản
+      description: 'FR01 - BR01.1: Đăng ký tài khoản.'
+      operationId: fr01
+      x-fr-id: FR01
+      x-sub-requirement: BR01.1
+      x-acceptance-criteria:
+      - AC-01
+      responses:
+        '200':
+          description: Đăng ký tài khoản thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterCustomerRequest'
+  /api/auth/login:
+    post:
+      tags:
+      - Customer
+      summary: Đăng nhập
+      description: 'FR02 - BR01.2: Khách hàng đăng nhập hệ thống.'
+      operationId: fr02
+      x-fr-id: FR02
+      x-sub-requirement: BR01.2
+      x-acceptance-criteria:
+      - AC-01
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Đăng nhập thành công, trả về token (AC-01)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Sai thông tin đăng nhập
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /api/customers/me:
+    put:
+      tags:
+      - Customer
+      summary: Cập nhật thông tin cá nhân
+      description: 'FR03 - BR01.3: Cập nhật thông tin cá nhân.'
+      operationId: fr03
+      x-fr-id: FR03
+      x-sub-requirement: BR01.3
+      x-acceptance-criteria:
+      - AC-02
+      responses:
+        '200':
+          description: Cập nhật thông tin cá nhân thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomerRequest'
+  /api/customers/me/rides/history:
+    get:
+      tags:
+      - Customer
+      summary: Xem lịch sử chuyến đi
+      description: 'FR34 - BR07.1: Xem lịch sử chuyến đi.'
+      operationId: fr34
+      x-fr-id: FR34
+      x-sub-requirement: BR07.1
+      x-acceptance-criteria:
+      - AC-18
+      responses:
+        '200':
+          description: Lịch sử chuyến đi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TripList'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+  /api/rides/{rideId}/rating:
+    post:
+      tags:
+      - Customer
+      summary: Đánh giá tài xế
+      description: 'FR36 - BR07.3: Đánh giá tài xế.'
+      operationId: fr36
+      x-fr-id: FR36
+      x-sub-requirement: BR07.3
+      x-acceptance-criteria:
+      - AC-19
+      responses:
+        '200':
+          description: Đánh giá tài xế thành công
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rating'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RatingRequest'
+      parameters:
+      - name: rideId
+        in: path
+        required: true
+        description: Mã chuyến đi
+        schema:
+          type: string
+        example: CH001
