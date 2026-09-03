@@ -1,0 +1,225 @@
+paths:
+  /api/notifications/customer/request-received:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo tiếp nhận yêu cầu
+      description: 'FR27 - BR06.1: Thông báo tiếp nhận yêu cầu.'
+      operationId: fr27
+      x-fr-id: FR27
+      x-sub-requirement: BR06.1
+      x-acceptance-criteria:
+      - AC-16
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Khách hàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+  /api/notifications/customer/driver-accepted:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo tài xế nhận chuyến
+      description: 'FR28 - BR06.2: Thông báo tài xế nhận chuyến.'
+      operationId: fr28
+      x-fr-id: FR28
+      x-sub-requirement: BR06.2
+      x-acceptance-criteria:
+      - AC-16
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Khách hàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+  /api/notifications/customer/driver-arrived:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo tài xế đến điểm đón
+      description: 'FR29 - BR06.3: Thông báo tài xế đến điểm đón.'
+      operationId: fr29
+      x-fr-id: FR29
+      x-sub-requirement: BR06.3
+      x-acceptance-criteria:
+      - AC-16
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Khách hàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+  /api/notifications/customer/trip-completed:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo chuyến hoàn thành
+      description: 'FR30 - BR06.4: Thông báo chuyến hoàn thành.'
+      operationId: fr30
+      x-fr-id: FR30
+      x-sub-requirement: BR06.4
+      x-acceptance-criteria:
+      - AC-16
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Khách hàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+  /api/notifications/customer/payment-result:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo kết quả thanh toán
+      description: 'FR31 - BR06.5: Thông báo kết quả thanh toán.'
+      operationId: fr31
+      x-fr-id: FR31
+      x-sub-requirement: BR06.5
+      x-acceptance-criteria:
+      - AC-16
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Khách hàng
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+  /api/notifications/driver/new-trip:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo chuyến mới cho tài xế
+      description: 'FR32 - BR06.6: Thông báo chuyến mới cho tài xế.'
+      operationId: fr32
+      x-fr-id: FR32
+      x-sub-requirement: BR06.6
+      x-acceptance-criteria:
+      - AC-17
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Tài xế
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+  /api/notifications/driver/trip-change:
+    post:
+      tags:
+      - Notification
+      summary: Thông báo thay đổi liên quan đến chuyến
+      description: 'FR33 - BR06.7: Thông báo thay đổi liên quan đến chuyến.'
+      operationId: fr33
+      x-fr-id: FR33
+      x-sub-requirement: BR06.7
+      x-acceptance-criteria:
+      - AC-17
+      responses:
+        '200':
+          description: Đã xử lý thông báo cho Tài xế
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notification'
+        '400':
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
