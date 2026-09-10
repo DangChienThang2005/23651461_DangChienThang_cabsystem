@@ -1,218 +1,24 @@
-﻿--- Sheet: Account Management ---
 Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS01_001,TS01.01 - Quản lý tài khoản khách hàng,Đăng ký tài khoản với thông tin hợp lệ,Khách hàng chưa tồn tại tài khoản trên hệ thống,1. Truy cập chức năng đăng ký,Email: customer01@gmail.com,Hệ thống tạo tài khoản thành công và lưu thông tin khách hàng,High
-,,,,2. Nhập thông tin tài khoản,Password: Customer@123,,
-,,,,3. Gửi yêu cầu đăng ký,Thông tin hợp lệ,,
-TC_TS01_002,TS01.01 - Quản lý tài khoản khách hàng,Đăng ký tài khoản với thông tin không hợp lệ,Người dùng đang ở màn hình đăng ký,1. Nhập thông tin sai,Email: customer01,Hệ thống từ chối đăng ký và thông báo dữ liệu không hợp lệ,Medium
-,,,,2. Gửi yêu cầu đăng ký,Password: 123,,
-TC_TS01_003,TS01.01 - Quản lý tài khoản khách hàng,Đăng ký tài khoản khi bỏ trống thông tin bắt buộc,Người dùng đang ở màn hình đăng ký,1. Không nhập thông tin bắt buộc,"Email: """"",Hệ thống yêu cầu nhập đầy đủ thông tin trước khi đăng ký,High
-,,,,2. Nhấn đăng ký,"Password: """"",,
-TC_TS01_004,TS01.01 - Quản lý tài khoản khách hàng,Kiểm tra giới hạn dữ liệu tài khoản,Người dùng đang đăng ký,1. Nhập dữ liệu ở giới hạn cho phép,Password tại giới hạn tối thiểu/tối đa,Hệ thống xử lý đúng theo giới hạn dữ liệu cho phép,Medium
-,,,,2. Gửi đăng ký,,,
-TC_TS01_005,TS01.01 - Quản lý tài khoản khách hàng,Đăng ký tài khoản khi hệ thống gặp lỗi,Người dùng nhập dữ liệu hợp lệ,1. Nhấn đăng ký,Server timeout,"Hệ thống thông báo lỗi, không tạo tài khoản lỗi",High
-,,,,2. Database không phản hồi,,,
-TC_TS01_006,TS01.01 - Quản lý tài khoản khách hàng,Đăng nhập bằng tài khoản hợp lệ,Khách hàng đã có tài khoản,1. Mở màn hình đăng nhập,Username: customer01,Người dùng đăng nhập thành công vào hệ thống,High
-,,,,2. Nhập tài khoản,Password: Customer@123,,
-,,,,3. Đăng nhập,,,
-TC_TS01_007,TS01.01 - Quản lý tài khoản khách hàng,Đăng nhập sai thông tin tài khoản,Khách hàng đã có tài khoản,1. Nhập sai mật khẩu,Username: customer01,Hệ thống từ chối đăng nhập và thông báo lỗi,High
-,,,,2. Đăng nhập,Password: Wrong123,,
-TC_TS01_008,TS01.01 - Quản lý tài khoản khách hàng,Cập nhật thông tin cá nhân hợp lệ,Khách hàng đã đăng nhập,1. Chọn cập nhật thông tin,Số điện thoại mới hợp lệ,Hệ thống cập nhật thông tin khách hàng thành công,Medium
-,,,,2. Nhập dữ liệu mới,,,
-,,,,3. Lưu,,,
-TC_TS01_009,TS01.01 - Quản lý tài khoản khách hàng,Cập nhật thông tin không hợp lệ,Khách hàng đã đăng nhập,1. Chọn cập nhật thông tin,Email sai định dạng,Hệ thống không cập nhật dữ liệu sai,Medium
-,,,,2. Nhập dữ liệu sai,,,
-,,,,3. Lưu,,,
-TC_TS01_010,TS01.01 - Quản lý tài khoản khách hàng,Cập nhật thông tin khi hệ thống lỗi,Khách hàng đã đăng nhập,1. Cập nhật thông tin,Database unavailable,Hệ thống thông báo cập nhật thất bại,High
-,,,,2. Lưu khi server lỗi,,,
-
---- Sheet: Ride Booking ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS02_001,TS02.01 - Tạo yêu cầu đặt xe,Tạo yêu cầu đặt xe với đầy đủ thông tin hợp lệ,Khách hàng đã đăng nhập vào hệ thống,1. Chọn chức năng đặt xe,Điểm đón: 123 Nguyễn Huệ,Hệ thống tạo yêu cầu đặt xe thành công và lưu thông tin chuyến đi,High
-,,,,2. Nhập điểm đón,Điểm đến: Sân bay Tân Sơn Nhất,,
-,,,,3. Nhập điểm đến,Loại xe: Sedan,,
-,,,,4. Chọn loại xe,,,
-,,,,5. Gửi yêu cầu,,,
-TC_TS02_002,TS02.01 - Tạo yêu cầu đặt xe,Tạo yêu cầu đặt xe với điểm đón không hợp lệ,Khách hàng đã đăng nhập,1. Chọn đặt xe,"Điểm đón: ""ABCXYZ123""",Hệ thống không chấp nhận điểm đón không hợp lệ và yêu cầu nhập lại,Medium
-,,,,2. Nhập điểm đón sai,,,
-,,,,3. Gửi yêu cầu,,,
-TC_TS02_003,TS02.01 - Tạo yêu cầu đặt xe,Tạo yêu cầu đặt xe khi không nhập điểm đón,Khách hàng đã đăng nhập,1. Chọn đặt xe,Điểm đón: Null,Hệ thống yêu cầu khách hàng nhập điểm đón trước khi tiếp tục,High
-,,,,2. Bỏ trống điểm đón,,,
-,,,,3. Gửi yêu cầu,,,
-TC_TS02_004,TS02.01 - Tạo yêu cầu đặt xe,Kiểm tra giá trị biên của thông tin địa điểm,Khách hàng đang tạo yêu cầu đặt xe,1. Nhập địa điểm với độ dài tại giới hạn cho phép,Địa chỉ có độ dài tối đa cho phép,Hệ thống xử lý đúng dữ liệu trong giới hạn cho phép,Medium
-,,,,2. Gửi yêu cầu,,,
-TC_TS02_005,TS02.01 - Tạo yêu cầu đặt xe,Tạo yêu cầu đặt xe khi dịch vụ đặt xe gặp lỗi,Khách hàng đã nhập đầy đủ thông tin,1. Nhấn gửi yêu cầu,Service đặt xe không phản hồi,Hệ thống thông báo lỗi và không tạo chuyến bị lỗi,High
-,,,,2. Hệ thống xảy ra lỗi kết nối,,,
-TC_TS02_006,TS02.01 - Tạo yêu cầu đặt xe,Chọn loại xe tồn tại trong hệ thống,Khách hàng đã nhập điểm đón và điểm đến,1. Mở danh sách loại xe,Loại xe: Sedan,Hệ thống ghi nhận loại xe khách hàng lựa chọn,High
-,,,,2. Chọn loại xe,,,
-,,,,3. Xác nhận,,,
-TC_TS02_007,TS02.01 - Tạo yêu cầu đặt xe,Chọn loại xe không tồn tại,Khách hàng đang tạo yêu cầu đặt xe,1. Gửi yêu cầu với loại xe không có trong hệ thống,Loại xe: XYZ,Hệ thống từ chối loại xe không hợp lệ,Medium
-TC_TS02_008,TS02.01 - Tạo yêu cầu đặt xe,Gửi yêu cầu đặt xe khi thiếu thông tin chuyến đi,Khách hàng đã đăng nhập,1. Nhập một phần thông tin,Có điểm đón nhưng thiếu điểm đến,Hệ thống không tạo yêu cầu đặt xe và yêu cầu bổ sung thông tin,High
-,,,,2. Gửi yêu cầu,,,
-TC_TS02_009,TS02.01 - Tạo yêu cầu đặt xe,Kiểm tra Business Rule khi tạo chuyến,Khách hàng đã nhập đầy đủ thông tin,1. Gửi yêu cầu đặt xe,Thông tin chuyến hợp lệ,Hệ thống chỉ tạo chuyến khi đầy đủ thông tin cần thiết theo quy định nghiệp vụ,High
-,,,,2. Hệ thống xử lý yêu cầu,,,
-
---- Sheet: Trip Tracking ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS03_001,TS03.01 - Theo dõi chuyến đi,Khách hàng theo dõi chuyến đi đang hoạt động,Khách hàng đã đăng nhập và có chuyến xe đang thực hiện,1. Truy cập chức năng theo dõi chuyến đi,Mã chuyến: TRIP001,Hệ thống hiển thị thông tin chuyến đi hiện tại,High
-,,,,2. Chọn chuyến đang hoạt động,,,
-TC_TS03_002,TS03.01 - Theo dõi chuyến đi,Theo dõi chuyến đi với thông tin tài xế hợp lệ,Chuyến đi đã được phân công tài xế,1. Mở thông tin chuyến đi,Driver: DR001,Hệ thống hiển thị thông tin tài xế được phân công,High
-,,,,2. Xem thông tin tài xế,,,
-TC_TS03_003,TS03.01 - Theo dõi chuyến đi,Theo dõi chuyến đi khi chưa có tài xế,Khách hàng đã tạo yêu cầu đặt xe nhưng chưa được phân công,1. Mở chức năng theo dõi chuyến,Trạng thái: Waiting Driver,Hệ thống hiển thị trạng thái đang chờ tìm tài xế,Medium
-,,,,2. Xem trạng thái chuyến,,,
-TC_TS03_004,TS03.01 - Theo dõi chuyến đi,Theo dõi chuyến đi không tồn tại,Khách hàng đã đăng nhập,1. Nhập mã chuyến không tồn tại,Trip ID: TRIP999,Hệ thống thông báo không tìm thấy chuyến đi,Medium
-,,,,2. Tìm kiếm,,,
-TC_TS03_005,TS03.01 - Theo dõi chuyến đi,Theo dõi chuyến đi khi không có dữ liệu,Khách hàng chưa có chuyến nào,1. Truy cập lịch sử/theo dõi chuyến,Không có Trip,Hệ thống thông báo khách hàng chưa có chuyến đi,Medium
-TC_TS03_006,TS03.01 - Theo dõi chuyến đi,Kiểm tra giá trị biên của thông tin trạng thái chuyến,Chuyến đi đang hoạt động,1. Theo dõi khi trạng thái chuyến thay đổi,Trạng thái: Pending → Accepted → Completed,Hệ thống hiển thị đúng trạng thái theo quá trình thực hiện chuyến,High
-TC_TS03_007,TS03.01 - Theo dõi chuyến đi,Xử lý lỗi khi lấy thông tin chuyến,Khách hàng có chuyến đang hoạt động,1. Mở theo dõi chuyến,Trip Service timeout,Hệ thống thông báo lỗi và không hiển thị dữ liệu sai,High
-,,,,2. Service chuyến đi lỗi,,,
-TC_TS03_008,TS03.01 - Theo dõi chuyến đi,Kiểm tra Business Rule về quyền xem chuyến,Khách hàng đăng nhập tài khoản A,1. Yêu cầu xem chuyến của tài khoản khác,Trip thuộc Customer B,Hệ thống không cho phép truy cập thông tin chuyến không thuộc quyền sở hữu,High
-
---- Sheet: Driver Matching ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS04_001,TS04.01 - Tìm kiếm tài xế phù hợp,Tìm kiếm tài xế phù hợp với yêu cầu chuyến đi,Khách hàng đã gửi yêu cầu đặt xe thành công,1. Hệ thống tiếp nhận yêu cầu chuyến,Điểm đón: Quận 1,Hệ thống tìm được tài xế phù hợp với yêu cầu chuyến đi,High
-,,,,2. Thực hiện tìm kiếm tài xế,Loại xe: Sedan,,
-TC_TS04_002,TS04.01 - Tìm kiếm tài xế phù hợp,Tìm kiếm tài xế khi tài xế không đáp ứng yêu cầu,Có danh sách tài xế trong hệ thống,1. Gửi yêu cầu tìm tài xế,Driver không phù hợp loại xe/trạng thái,Hệ thống không lựa chọn tài xế không phù hợp,High
-,,,,2. Hệ thống kiểm tra tài xế,,,
-TC_TS04_003,TS04.01 - Tìm kiếm tài xế phù hợp,Tìm kiếm tài xế khi không có tài xế khả dụng,Có yêu cầu đặt xe hợp lệ,1. Hệ thống tìm kiếm tài xế,Không có Driver Available,Hệ thống xử lý trường hợp không tìm thấy tài xế phù hợp,High
-,,,,2. Không có Driver Available,,,
-TC_TS04_004,TS04.01 - Tìm kiếm tài xế phù hợp,Kiểm tra giới hạn khoảng cách tìm kiếm tài xế,Có yêu cầu đặt xe,1. Hệ thống tìm tài xế theo vị trí,Driver ở khoảng cách giới hạn cho phép,Hệ thống xử lý đúng theo phạm vi tìm kiếm tài xế,Medium
-TC_TS04_005,TS04.01 - Tìm kiếm tài xế phù hợp,Tìm kiếm tài xế khi dữ liệu vị trí bị thiếu,Driver tồn tại nhưng thiếu thông tin vị trí,1. Hệ thống thực hiện tìm kiếm,Driver không có location,Hệ thống bỏ qua tài xế không đủ thông tin để phân công,Medium
-TC_TS04_006,TS04.01 - Tìm kiếm tài xế phù hợp,Xử lý lỗi khi dịch vụ tìm kiếm tài xế gặp lỗi,Khách hàng đã tạo chuyến,1. Gửi yêu cầu tìm Driver,Driver Matching Service timeout,Hệ thống thông báo lỗi và xử lý theo cơ chế lỗi,High
-,,,,2. Service tìm kiếm lỗi,,,
-TC_TS04_007,TS04.01 - Tìm kiếm tài xế phù hợp,Kiểm tra Business Rule về trạng thái Driver,Có nhiều Driver trong hệ thống,1. Hệ thống lọc danh sách Driver,Driver A: Available,Hệ thống chỉ chọn Driver có trạng thái phù hợp để nhận chuyến,High
-,,,,2. Chọn Driver,Driver B: Busy,,
-
---- Sheet: Trip Assignment ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS05_001,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Phân công chuyến cho tài xế phù hợp,Hệ thống đã tìm được tài xế phù hợp,1. Hệ thống gửi yêu cầu chuyến đến tài xế,Driver: DR001,Hệ thống phân công chuyến thành công cho tài xế,High
-,,,,2. Tài xế nhận yêu cầu,Status: Available,,
-TC_TS05_002,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Phân công chuyến cho tài xế không đủ điều kiện,Có danh sách tài xế trong hệ thống,1. Hệ thống kiểm tra tài xế,Driver: Busy/Unavailable,Hệ thống không phân công tài xế không đủ điều kiện,High
-,,,,2. Thực hiện phân công,,,
-TC_TS05_003,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Tài xế chấp nhận chuyến được phân công,Tài xế đã nhận được yêu cầu chuyến,1. Tài xế xem thông tin chuyến,Trip ID: TRIP001,Hệ thống cập nhật tài xế nhận chuyến thành công,High
-,,,,2. Chọn nhận chuyến,,,
-TC_TS05_004,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Tài xế từ chối chuyến được phân công,Tài xế đã nhận được yêu cầu chuyến,1. Tài xế xem yêu cầu chuyến,Trip ID: TRIP001,Hệ thống ghi nhận tài xế từ chối chuyến và xử lý theo quy trình phân công,High
-,,,,2. Chọn từ chối,,,
-TC_TS05_005,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Tài xế không phản hồi yêu cầu chuyến,Hệ thống đã gửi yêu cầu đến tài xế,1. Gửi yêu cầu chuyến,Driver không phản hồi trong thời gian quy định,Hệ thống xử lý trường hợp không phản hồi và tiếp tục xử lý tìm tài xế khác,High
-,,,,2. Không có phản hồi từ tài xế,,,
-TC_TS05_006,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Kiểm tra giá trị biên thời gian phản hồi chuyến,Hệ thống đang chờ phản hồi tài xế,1. Gửi yêu cầu chuyến,Thời gian phản hồi tại giới hạn cho phép,Hệ thống xử lý đúng theo thời gian quy định,Medium
-,,,,2. Kiểm tra thời gian phản hồi,,,
-TC_TS05_007,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Xử lý lỗi khi gửi yêu cầu chuyến đến tài xế,Hệ thống đã xác định tài xế,1. Gửi yêu cầu chuyến,Notification/Dispatch Service lỗi,Hệ thống thông báo lỗi và không tạo trạng thái phân công sai,High
-,,,,2. Dịch vụ thông báo lỗi,,,
-TC_TS05_008,TS05.01 - Phân công chuyến và xử lý phản hồi tài xế,Kiểm tra Business Rule khi phân công tài xế,Có nhiều tài xế trong hệ thống,1. Hệ thống lựa chọn tài xế,"Driver A: Available, phù hợp vị trí",Hệ thống chỉ phân công Driver đáp ứng điều kiện nghiệp vụ,High
-,,,,2. Thực hiện phân công,Driver B: Busy,,
-
---- Sheet: Trip Execution ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS06_001,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Cập nhật trạng thái chuyến theo đúng quy trình,Chuyến đã được phân công cho tài xế,1. Tài xế nhận chuyến,Trạng thái: Assigned → In Progress → Completed,Hệ thống cập nhật trạng thái chuyến thành công theo đúng quy trình,High
-,,,,2. Cập nhật trạng thái chuyến theo quá trình thực hiện,,,
-TC_TS06_002,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Tài xế cập nhật trạng thái chuyến hợp lệ,Tài xế đã nhận chuyến,1. Tài xế truy cập chuyến được giao,Driver bắt đầu chuyến,Hệ thống ghi nhận trạng thái mới của chuyến đi,High
-,,,,2. Cập nhật trạng thái hiện tại,,,
-TC_TS06_003,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Cập nhật trạng thái chuyến không hợp lệ,Chuyến đang ở trạng thái chưa phù hợp,1. Tài xế gửi trạng thái không đúng thứ tự,Completed → Assigned,Hệ thống từ chối cập nhật trạng thái không hợp lệ,High
-TC_TS06_004,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Cập nhật trạng thái chuyến khi thiếu thông tin chuyến,Tài xế đã đăng nhập,1. Chọn cập nhật trạng thái,Trip ID: Null,Hệ thống yêu cầu cung cấp đầy đủ thông tin chuyến,Medium
-,,,,2. Thiếu mã chuyến,,,
-TC_TS06_005,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Kiểm tra giới hạn số lần cập nhật trạng thái,Chuyến đang thực hiện,1. Gửi nhiều yêu cầu cập nhật liên tiếp,Update status nhiều lần trong thời gian ngắn,"Hệ thống xử lý cập nhật theo quy định, không tạo trạng thái sai",Medium
-TC_TS06_006,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Xử lý lỗi khi cập nhật trạng thái chuyến,Tài xế đang thực hiện chuyến,1. Cập nhật trạng thái,Trip Service timeout,Hệ thống thông báo lỗi và không lưu trạng thái không hoàn chỉnh,High
-,,,,2. Service chuyến đi xảy ra lỗi,,,
-TC_TS06_007,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Xử lý trường hợp không tìm được tài xế,Khách hàng đã gửi yêu cầu đặt xe,1. Hệ thống thực hiện tìm tài xế,Không có Driver Available,Hệ thống thông báo không tìm được tài xế theo quy định,High
-,,,,2. Không có tài xế phù hợp,,,
-TC_TS06_008,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Kiểm tra Business Rule về luồng trạng thái chuyến,Chuyến đã được tạo,1. Thực hiện cập nhật trạng thái chuyến,Assigned → Arrived → Picked Up → Completed,Hệ thống chỉ cho phép chuyển trạng thái theo đúng luồng nghiệp vụ,High
-TC_TS06_009,TS06.01 - Thực hiện và cập nhật trạng thái chuyến đi,Khách hàng theo dõi trạng thái chuyến đang thực hiện,Khách hàng có chuyến đang hoạt động,1. Mở chức năng theo dõi chuyến,Trip đang In Progress,Hệ thống hiển thị đúng trạng thái hiện tại của chuyến,Medium
-,,,,2. Kiểm tra trạng thái,,,
-
---- Sheet: Fare Calculation ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS07_001,TS07.01 - Tính cước chuyến đi,Tính cước chuyến đi với thông tin hợp lệ,Chuyến đi đã hoàn thành,1. Hệ thống lấy thông tin chuyến đi,Khoảng cách: 10km,Hệ thống tính đúng số tiền cần thanh toán cho chuyến đi,High
-,,,,2. Thực hiện tính cước,Loại xe: Sedan,,
-,,,,,Thời gian chuyến hợp lệ,,
-TC_TS07_002,TS07.01 - Tính cước chuyến đi,Tính cước khi dữ liệu chuyến đi không hợp lệ,Chuyến đi tồn tại nhưng thiếu dữ liệu,1. Hệ thống thực hiện tính cước,Thiếu khoảng cách chuyến đi,Hệ thống không thực hiện tính cước và yêu cầu bổ sung dữ liệu,High
-,,,,2. Kiểm tra dữ liệu đầu vào,,,
-TC_TS07_003,TS07.01 - Tính cước chuyến đi,Tính cước khi dữ liệu chuyến đi bị rỗng,Chuyến đi chưa có đầy đủ thông tin,1. Yêu cầu tính cước,Distance = Null,Hệ thống không tạo kết quả tính cước không hợp lệ,Medium
-,,,,2. Kiểm tra dữ liệu chuyến,Trip Information = Null,,
-TC_TS07_004,TS07.01 - Tính cước chuyến đi,Kiểm tra giá trị biên của thông tin tính cước,Chuyến đi đã hoàn thành,1. Tính cước với giá trị nhỏ nhất/lớn nhất,Khoảng cách tối thiểu và tối đa trong phạm vi hệ thống,Hệ thống xử lý đúng theo giới hạn dữ liệu cho phép,Medium
-TC_TS07_005,TS07.01 - Tính cước chuyến đi,Tính cước khi loại xe không tồn tại,Có yêu cầu tính cước,1. Hệ thống lấy thông tin loại xe,Vehicle Type: XYZ,Hệ thống từ chối tính cước với loại xe không hợp lệ,Medium
-,,,,2. Tính cước,,,
-TC_TS07_006,TS07.01 - Tính cước chuyến đi,Xử lý lỗi khi dịch vụ tính cước gặp lỗi,Chuyến đi đã hoàn thành,1. Gửi yêu cầu tính cước,Fare Service timeout,Hệ thống thông báo lỗi và không tạo số tiền sai,High
-,,,,2. Fare Service xảy ra lỗi,,,
-TC_TS07_007,TS07.01 - Tính cước chuyến đi,Kiểm tra Business Rule về tính cước,Chuyến đi đã hoàn thành,1. Hệ thống tính tiền dựa trên thông tin chuyến,Trip hoàn thành hợp lệ,Hệ thống chỉ tính cước cho chuyến đi hợp lệ và đã hoàn thành,High
-
---- Sheet: Payment Processing ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS08_001,TS08.01 - Thanh toán chuyến đi,Thanh toán chuyến đi thành công bằng phương thức hợp lệ,Chuyến đi đã hoàn thành và có số tiền cần thanh toán,1. Khách hàng mở chức năng thanh toán,Số tiền: 150.000 VNĐ,Hệ thống ghi nhận thanh toán thành công,High
-,,,,2. Chọn phương thức thanh toán,Phương thức: Tiền mặt,,
-,,,,3. Xác nhận thanh toán,,,
-TC_TS08_002,TS08.01 - Thanh toán chuyến đi,Thanh toán điện tử thành công,Chuyến đi hoàn thành và khách hàng chọn thanh toán điện tử,1. Chọn thanh toán điện tử,Payment Method: Online Payment,Hệ thống xử lý giao dịch và cập nhật trạng thái thanh toán thành công,High
-,,,,2. Xác nhận giao dịch,,,
-TC_TS08_003,TS08.01 - Thanh toán chuyến đi,Thanh toán với phương thức không hợp lệ,Khách hàng đang ở màn hình thanh toán,1. Chọn phương thức thanh toán không được hỗ trợ,Payment Method: Unknown,Hệ thống từ chối phương thức thanh toán không hợp lệ,Medium
-,,,,2. Xác nhận,,,
-TC_TS08_004,TS08.01 - Thanh toán chuyến đi,Thanh toán khi thiếu thông tin giao dịch,Chuyến đi đã hoàn thành,1. Thực hiện thanh toán,Payment Information = Null,Hệ thống yêu cầu bổ sung thông tin trước khi xử lý thanh toán,Medium
-,,,,2. Thiếu thông tin cần thiết,,,
-TC_TS08_005,TS08.01 - Thanh toán chuyến đi,Kiểm tra giá trị biên số tiền thanh toán,Chuyến đi đã hoàn thành,1. Thực hiện thanh toán với giá trị nhỏ nhất/lớn nhất,Amount = Giá trị biên cho phép,Hệ thống xử lý đúng số tiền trong phạm vi cho phép,Medium
-TC_TS08_006,TS08.01 - Thanh toán chuyến đi,Thanh toán thất bại do nhà cung cấp thanh toán lỗi,Khách hàng chọn thanh toán điện tử,1. Gửi yêu cầu thanh toán,Payment Provider Timeout,Hệ thống thông báo thanh toán thất bại và xử lý theo quy trình retry,High
-,,,,2. Payment Provider xảy ra lỗi,,,
-TC_TS08_007,TS08.01 - Thanh toán chuyến đi,Thanh toán lại sau khi thất bại,Giao dịch trước đó bị thất bại,1. Thực hiện thanh toán lại,Giao dịch retry thành công,Hệ thống cập nhật trạng thái thanh toán thành công,High
-,,,,2. Xác nhận giao dịch,,,
-TC_TS08_008,TS08.01 - Thanh toán chuyến đi,Kiểm tra lưu thông tin giao dịch thanh toán,Thanh toán thành công,1. Hoàn thành thanh toán,Transaction ID hợp lệ,Hệ thống lưu thông tin giao dịch thành công,High
-,,,,2. Kiểm tra lịch sử giao dịch,,,
-TC_TS08_009,TS08.01 - Thanh toán chuyến đi,Kiểm tra Business Rule về bảo mật thanh toán,Khách hàng thanh toán điện tử,1. Thực hiện giao dịch,Thông tin thẻ/tài khoản thanh toán,Hệ thống không lưu thông tin thanh toán nhạy cảm,High
-,,,,2. Kiểm tra dữ liệu lưu trữ,,,
-
---- Sheet: Notification & Rating ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS09_001,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Gửi thông báo khi khách hàng tạo yêu cầu đặt xe,Khách hàng đã gửi yêu cầu đặt xe thành công,1. Khách hàng tạo yêu cầu đặt xe,Trip Request: TRIP001,Hệ thống gửi thông báo tiếp nhận yêu cầu đặt xe cho khách hàng,High
-,,,,2. Hệ thống xử lý yêu cầu,,,
-TC_TS09_002,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Gửi thông báo khi tài xế nhận chuyến,Tài xế đã nhận chuyến thành công,1. Tài xế nhận chuyến,Driver: DR001,Khách hàng nhận được thông báo tài xế đã nhận chuyến,High
-,,,,2. Hệ thống cập nhật trạng thái,Status: Accepted,,
-TC_TS09_003,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Gửi thông báo khi trạng thái chuyến thay đổi,Chuyến đi đang được thực hiện,1. Tài xế cập nhật trạng thái chuyến,Status: Arrived / Completed,Hệ thống gửi thông báo cập nhật trạng thái chuyến,High
-,,,,2. Kiểm tra thông báo,,,
-TC_TS09_004,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Gửi thông báo khi dữ liệu thông báo không hợp lệ,Hệ thống đang xử lý thông báo,1. Gửi yêu cầu thông báo,Notification Data thiếu thông tin người nhận,Hệ thống không gửi thông báo sai và ghi nhận lỗi xử lý,Medium
-,,,,2. Kiểm tra dữ liệu nhận,,,
-TC_TS09_005,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Gửi thông báo khi thông tin người nhận bị rỗng,Hệ thống tạo thông báo,1. Tạo thông báo,Receiver = Null,Hệ thống yêu cầu bổ sung thông tin người nhận,Medium
-,,,,2. Không có người nhận,,,
-TC_TS09_006,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Xử lý lỗi khi dịch vụ thông báo gặp lỗi,Có sự kiện cần gửi thông báo,1. Hệ thống gửi thông báo,Notification Service Timeout,Hệ thống xử lý lỗi và không làm mất trạng thái nghiệp vụ,High
-,,,,2. Notification Service lỗi,,,
-TC_TS09_007,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Khách hàng xem lịch sử chuyến đi,Khách hàng đã có các chuyến đi trước đó,1. Truy cập lịch sử chuyến đi,Customer ID: C001,Hệ thống hiển thị danh sách chuyến đi của khách hàng,High
-,,,,2. Xem danh sách chuyến,,,
-TC_TS09_008,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Xem lịch sử chuyến đi khi không có dữ liệu,Khách hàng chưa có chuyến đi nào,1. Truy cập lịch sử chuyến đi,Không có Trip,Hệ thống hiển thị thông báo chưa có lịch sử chuyến đi,Medium
-TC_TS09_009,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Khách hàng đánh giá chuyến đi sau khi hoàn thành,Chuyến đi đã hoàn thành,1. Mở chức năng đánh giá,Rating: 5 sao,Hệ thống lưu đánh giá thành công,High
-,,,,2. Nhập đánh giá,Comment hợp lệ,,
-,,,,3. Gửi đánh giá,,,
-TC_TS09_010,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Khách hàng đánh giá chuyến đi chưa hoàn thành,Chuyến đi chưa hoàn thành,1. Mở chức năng đánh giá,Trip Status: In Progress,Hệ thống từ chối đánh giá khi chuyến chưa hoàn thành,High
-,,,,2. Gửi đánh giá,,,
-TC_TS09_011,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Kiểm tra giá trị biên của đánh giá,Chuyến đi đã hoàn thành,1. Nhập mức đánh giá thấp nhất/cao nhất,Rating: Min/Max theo hệ thống,Hệ thống chấp nhận giá trị hợp lệ và từ chối ngoài phạm vi,Medium
-,,,,2. Gửi đánh giá,,,
-TC_TS09_012,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Đánh giá khi nội dung nhận xét rỗng,Chuyến đi đã hoàn thành,1. Chọn đánh giá,Comment = Null,Hệ thống xử lý theo quy định về thông tin đánh giá,Medium
-,,,,2. Không nhập nhận xét,,,
-,,,,3. Gửi,,,
-TC_TS09_013,"TS09.01 - Thông báo, lịch sử chuyến đi và đánh giá",Kiểm tra Business Rule về đánh giá,Khách hàng có chuyến đã hoàn thành,1. Gửi đánh giá cho chuyến đi,Trip Status: Completed,Chỉ khách hàng có chuyến hoàn thành mới được phép đánh giá,High
-
---- Sheet: Operation Management ---
-Test Case ID,Test Scenario,Test Case,Preconditions,Test Steps,Test Data,Expected Result,Priority
-TC_TS10_001,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Quản lý thông tin tài xế với dữ liệu hợp lệ,Operations Staff đã đăng nhập và có quyền quản lý,1. Truy cập chức năng quản lý tài xế,Driver ID: DR001,Hệ thống lưu thông tin tài xế thành công,High
-,,,,2. Thêm/cập nhật thông tin tài xế,Thông tin hợp lệ,,
-,,,,3. Lưu dữ liệu,,,
-TC_TS10_002,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Quản lý tài xế với thông tin không hợp lệ,Operations Staff có quyền quản lý,1. Nhập thông tin tài xế,Thiếu thông tin bắt buộc của Driver,Hệ thống từ chối lưu dữ liệu không hợp lệ,Medium
-,,,,2. Lưu dữ liệu,,,
-TC_TS10_003,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Quản lý tài xế khi dữ liệu bị rỗng,Operations Staff đang quản lý Driver,1. Tạo/cập nhật Driver,Driver Name = Null,Hệ thống yêu cầu nhập đầy đủ thông tin,Medium
-,,,,2. Không nhập thông tin bắt buộc,,,
-TC_TS10_004,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Quản lý phương tiện hợp lệ,Driver hoặc Operations Staff có quyền quản lý phương tiện,1. Truy cập quản lý phương tiện,Vehicle ID: VH001,Hệ thống lưu thông tin phương tiện thành công,High
-,,,,2. Thêm/cập nhật phương tiện,Thông tin xe hợp lệ,,
-TC_TS10_005,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Quản lý phương tiện bị trùng thông tin,Đã tồn tại phương tiện trong hệ thống,1. Thêm phương tiện mới,Vehicle ID đã tồn tại,Hệ thống không tạo dữ liệu phương tiện trùng,Medium
-,,,,2. Nhập thông tin trùng,,,
-TC_TS10_006,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Kiểm tra trạng thái hoạt động của tài xế,Có danh sách Driver trong hệ thống,1. Xem trạng thái Driver,Driver Status: Available/Busy,Hệ thống hiển thị đúng trạng thái hoạt động của Driver,High
-,,,,2. Kiểm tra trạng thái hiện tại,,,
-TC_TS10_007,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Giám sát chuyến đi đang hoạt động,Có chuyến đang thực hiện,1. Operations Staff truy cập giám sát chuyến,Trip ID: TRIP001,Hệ thống hiển thị thông tin chuyến đang hoạt động,High
-,,,,2. Xem thông tin chuyến,,,
-TC_TS10_008,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Tra cứu lịch sử giao dịch,Hệ thống có dữ liệu giao dịch,1. Mở chức năng tra cứu giao dịch,Transaction ID: TX001,Hệ thống hiển thị thông tin giao dịch phù hợp,Medium
-,,,,2. Nhập điều kiện tìm kiếm,,,
-TC_TS10_009,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Tra cứu giao dịch với điều kiện tìm kiếm không hợp lệ,Operations Staff đã đăng nhập,1. Nhập điều kiện tìm kiếm sai,Transaction ID không tồn tại,Hệ thống thông báo không tìm thấy dữ liệu phù hợp,Medium
-,,,,2. Thực hiện tra cứu,,,
-TC_TS10_010,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Xem báo cáo hoạt động hệ thống,Người dùng có quyền xem báo cáo,1. Truy cập chức năng báo cáo,"Báo cáo chuyến đi, doanh thu, hoạt động Driver",Hệ thống hiển thị báo cáo tương ứng,High
-,,,,2. Chọn loại báo cáo,,,
-TC_TS10_011,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Xem báo cáo khi không có dữ liệu,Người dùng có quyền xem báo cáo,1. Chọn khoảng thời gian không có dữ liệu,Không có dữ liệu chuyến đi,Hệ thống thông báo không có dữ liệu báo cáo,Medium
-,,,,2. Xem báo cáo,,,
-TC_TS10_012,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Kiểm tra giá trị biên khi tạo báo cáo,Có dữ liệu hoạt động hệ thống,1. Chọn khoảng thời gian nhỏ nhất/lớn nhất,Date Range tại giới hạn cho phép,Hệ thống xử lý báo cáo đúng theo phạm vi thời gian,Medium
-,,,,2. Tạo báo cáo,,,
-TC_TS10_013,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Xử lý lỗi khi lấy dữ liệu báo cáo,Người dùng yêu cầu xem báo cáo,1. Gửi yêu cầu báo cáo,Report Service Timeout,Hệ thống thông báo lỗi và không hiển thị dữ liệu sai,High
-,,,,2. Report Service lỗi,,,
-TC_TS10_014,"TS10.01 - Quản lý vận hành, tài xế, phương tiện và báo cáo",Kiểm tra Business Rule về quyền quản lý,Người dùng không có quyền Operations Staff,1. Truy cập chức năng quản lý vận hành,User Role: Customer,Hệ thống từ chối truy cập chức năng quản trị,High
-
+TC_TS02_001,TS02.01 - T?o y�u c?u ??t xe,T?o y�u c?u ??t xe v?i ??y ?? th�ng tin h?p l?,Kh�ch h�ng ?� ??ng nh?p v�o h? th?ng,1. Ch?n ch?c n?ng ??t xe,?i?m ?�n: 123 Nguy?n Hu?,H? th?ng t?o y�u c?u ??t xe th�nh c�ng v� l?u th�ng tin chuy?n ?i,High
+,,,,2. Nh?p ?i?m ?�n,?i?m ??n: S�n bay T�n S?n Nh?t,,
+,,,,3. Nh?p ?i?m ??n,Lo?i xe: Sedan,,
+,,,,4. Ch?n lo?i xe,,,
+,,,,5. G?i y�u c?u,,,
+TC_TS02_002,TS02.01 - T?o y�u c?u ??t xe,T?o y�u c?u ??t xe v?i ?i?m ?�n kh�ng h?p l?,Kh�ch h�ng ?� ??ng nh?p,1. Ch?n ??t xe,"?i?m ?�n: ""ABCXYZ123""",H? th?ng kh�ng ch?p nh?n ?i?m ?�n kh�ng h?p l? v� y�u c?u nh?p l?i,Medium
+,,,,2. Nh?p ?i?m ?�n sai,,,
+,,,,3. G?i y�u c?u,,,
+TC_TS02_003,TS02.01 - T?o y�u c?u ??t xe,T?o y�u c?u ??t xe khi kh�ng nh?p ?i?m ?�n,Kh�ch h�ng ?� ??ng nh?p,1. Ch?n ??t xe,?i?m ?�n: Null,H? th?ng y�u c?u kh�ch h�ng nh?p ?i?m ?�n tr??c khi ti?p t?c,High
+,,,,2. B? tr?ng ?i?m ?�n,,,
+,,,,3. G?i y�u c?u,,,
+TC_TS02_004,TS02.01 - T?o y�u c?u ??t xe,Ki?m tra gi� tr? bi�n c?a th�ng tin ??a ?i?m,Kh�ch h�ng ?ang t?o y�u c?u ??t xe,1. Nh?p ??a ?i?m v?i ?? d�i t?i gi?i h?n cho ph�p,??a ch? c� ?? d�i t?i ?a cho ph�p,H? th?ng x? l� ?�ng d? li?u trong gi?i h?n cho ph�p,Medium
+,,,,2. G?i y�u c?u,,,
+TC_TS02_005,TS02.01 - T?o y�u c?u ??t xe,T?o y�u c?u ??t xe khi d?ch v? ??t xe g?p l?i,Kh�ch h�ng ?� nh?p ??y ?? th�ng tin,1. Nh?n g?i y�u c?u,Service ??t xe kh�ng ph?n h?i,H? th?ng th�ng b�o l?i v� kh�ng t?o chuy?n b? l?i,High
+,,,,2. H? th?ng x?y ra l?i k?t n?i,,,
+TC_TS02_006,TS02.01 - T?o y�u c?u ??t xe,Ch?n lo?i xe t?n t?i trong h? th?ng,Kh�ch h�ng ?� nh?p ?i?m ?�n v� ?i?m ??n,1. M? danh s�ch lo?i xe,Lo?i xe: Sedan,H? th?ng ghi nh?n lo?i xe kh�ch h�ng l?a ch?n,High
+,,,,2. Ch?n lo?i xe,,,
+,,,,3. X�c nh?n,,,
+TC_TS02_007,TS02.01 - T?o y�u c?u ??t xe,Ch?n lo?i xe kh�ng t?n t?i,Kh�ch h�ng ?ang t?o y�u c?u ??t xe,1. G?i y�u c?u v?i lo?i xe kh�ng c� trong h? th?ng,Lo?i xe: XYZ,H? th?ng t? ch?i lo?i xe kh�ng h?p l?,Medium
+TC_TS02_008,TS02.01 - T?o y�u c?u ??t xe,G?i y�u c?u ??t xe khi thi?u th�ng tin chuy?n ?i,Kh�ch h�ng ?� ??ng nh?p,1. Nh?p m?t ph?n th�ng tin,C� ?i?m ?�n nh?ng thi?u ?i?m ??n,H? th?ng kh�ng t?o y�u c?u ??t xe v� y�u c?u b? sung th�ng tin,High
+,,,,2. G?i y�u c?u,,,
+TC_TS02_009,TS02.01 - T?o y�u c?u ??t xe,Ki?m tra Business Rule khi t?o chuy?n,Kh�ch h�ng ?� nh?p ??y ?? th�ng tin,1. G?i y�u c?u ??t xe,Th�ng tin chuy?n h?p l?,H? th?ng ch? t?o chuy?n khi ??y ?? th�ng tin c?n thi?t theo quy ??nh nghi?p v?,High
+,,,,2. H? th?ng x? l� y�u c?u,,,
